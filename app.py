@@ -54,16 +54,16 @@ def main():
     st.title("Kapital- und Umsatzentwicklung")
 
     # Eingabe-Widgets
-    anlegeranzahl_start = st.sidebar.number_input("Anlegeranzahl zu Beginn der Rechnung", value=50)
-    startkapital = st.sidebar.number_input("Durchschnittsstartkapital pro Anleger (€)", value=10000)
-    monatliche_einzahlung = st.sidebar.number_input("Durchschnittlich monatlich weitere Einzahlung (€)", value=200)
-    kapitalwachstum_pro_tag = st.sidebar.number_input("Durchschnittliches Kapitalwachstum pro Tag (in %)", value=1)
-    gebuehr_prozent = st.sidebar.number_input("Gebühr (in %)", value=10)
-    anlegerwachstum_pro_monat = st.sidebar.number_input("Durchschnittliches Anlegerwachstum pro Monat (in %)", value=5)
     zeitrahmen = st.sidebar.selectbox(
         "Zeitraum auswählen:",
         ("30 Tage (Monat)", "90 Tage (Quartal)", "12 Monate (Jahr)", "12 Quartale (3 Jahre)", "12 halbe Jahre (5 Jahre)", "10 Jahre")
     )
+    anlegeranzahl_start = st.sidebar.number_input("Anlegeranzahl zu Beginn der Rechnung", value=50)
+    startkapital = st.sidebar.number_input("Durchschnittsstartkapital pro Anleger (€)", value=10000)
+    monatliche_einzahlung = st.sidebar.number_input("Durchschnittlich weitere Einzahlung (pro Monat pro Anleger)", value=200)
+    kapitalwachstum_pro_tag = st.sidebar.number_input("Durchschnittliches Kapitalwachstum pro Tag (in %)", value=1)
+    gebuehr_prozent = st.sidebar.number_input("Unsere Gebühr (in %)", value=10)
+    anlegerwachstum_pro_monat = st.sidebar.number_input("Durchschnittliches Wachstum der Anleger pro Monat (in %)", value=5)
 
     # Berechnung durchführen
     tage = {"30 Tage (Monat)": 30, "90 Tage (Quartal)": 90, "12 Monate (Jahr)": 365, "12 Quartale (3 Jahre)": 3*365, "12 halbe Jahre (5 Jahre)": 5*365, "10 Jahre": 10*365}[zeitrahmen]

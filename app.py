@@ -80,8 +80,8 @@ def main():
         "tooltip": {"trigger": "axis"}
     }
     st.subheader("Umsatzwachstum (Gebühren)")
-    st_echarts(options=options_umsatz)
     zeige_wachstumsdaten(umsatz, "")
+    st_echarts(options=options_umsatz)
 
 
     # ECharts-Diagramm für Kapitalentwicklung
@@ -92,8 +92,8 @@ def main():
         "tooltip": {"trigger": "axis"}
     }
     st.subheader("Gesamtwachstum Kapital")
-    st_echarts(options=options_kapital)
     zeige_wachstumsdaten(kapital, "")
+    st_echarts(options=options_kapital)
 
 
     options_einzelkapital = {
@@ -103,8 +103,8 @@ def main():
         "tooltip": {"trigger": "axis"}
     }
     st.subheader("Kapitalwachstum pro Anleger")
-    st_echarts(options=options_einzelkapital)
     zeige_wachstumsdaten(einzelkapital, "")
+    st_echarts(options=options_einzelkapital)
 
 if __name__ == "__main__":
     main()

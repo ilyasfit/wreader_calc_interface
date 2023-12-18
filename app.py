@@ -42,7 +42,7 @@ def aggregiere_daten(daten, zeitrahmen):
 
 
 def zeige_wachstumsdaten(daten, titel):
-    locale.setlocale(locale.LC_ALL, 'de_DE')
+    locale.setlocale(locale.LC_ALL, '')
 
     startwert = daten[0]
     endwert = daten[-1]

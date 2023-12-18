@@ -65,6 +65,12 @@ def zeige_wachstumsdaten(daten, titel):
 
 # Streamlit App
 def main():
+    st.set_page_config(
+        page_title="Wreader", 
+        page_icon="✨",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
     st.title("Kapital- und Umsatzentwicklung")
 
     # Eingabe-Widgets

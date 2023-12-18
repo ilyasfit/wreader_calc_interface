@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import locale
 from streamlit_echarts import st_echarts
 
 # Funktion zur Berechnung der Kapitalentwicklung
@@ -42,25 +41,18 @@ def aggregiere_daten(daten, zeitrahmen):
 
 
 def zeige_wachstumsdaten(daten, titel):
-    locale.setlocale(locale.LC_ALL, '')
 
     startwert = daten[0]
     endwert = daten[-1]
     wachstum = ((endwert - startwert) / startwert) * 100 if startwert != 0 else 0
     pnl = endwert - startwert
     
-    formatted_startwert = locale.format_string("%0.2f", startwert, grouping=True)
-    formatted_endwert = locale.format_string("%0.2f", endwert, grouping=True)
-    formatted_pnl = locale.format_string("%0.2f", pnl, grouping=True)
-    formatted_wachstum = locale.format_string("%0.2f", wachstum, grouping=True)
-
-    
     st.subheader(titel)
     st.markdown(f'''
-                **P&L:** :green[{formatted_pnl}] €  
-                **Wachstum:** {formatted_wachstum} %  
-                **Startwert:** {formatted_startwert} €  
-                **Endwert:** {formatted_endwert} €
+                **P&L:** :green[{pnl:,.2f}] €  
+                **Wachstum:** {wachstum:,.2f} %  
+                **Startwert:** {startwert:,.2f} €  
+                **Endwert:** {endwert:,.2f} €
                 ''')
 
 # Streamlit App
@@ -119,10 +111,17 @@ def main():
 
 
     options_einzelkapital = {
-        "xAxis": {"type": "category", "data": list(einzelkapital_aggregiert.index)},
-        "yAxis": {"type": "value"},
+        "xAxis": {
+            "type": "category", 
+            "data": list(einzelkapital_aggregiert.index)
+        },
+        "yAxis": {
+            "type": "value"
+        },
         "series": [{"data": list(einzelkapital_aggregiert['Werte']), "type": "line"}],
-        "tooltip": {"trigger": "axis"}
+        "tooltip": {
+            "trigger": "axis",
+        }
     }
     st.subheader("Kapitalwachstum pro Anleger")
     zeige_wachstumsdaten(einzelkapital, "")
